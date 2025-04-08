@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    
+</head>
+<body>
+    <H3>Please click an Option</H3>
+    <button id="userInputR"> Rock</button>
+    <button id="userInputP"> Paper</button>
+    <button id="userInputS"> Scissors</button>
+
+    <h4 id="humanScore">Human Score: 0</h4>
+    <h4 id="computerScore">Computer Score: 0 </h4>
+
+<script>
+let humanScore = 0;
+let computerScore = 0;
+const userChoiceR = document.getElementById("userInputR");
+const userChoiceP = document.getElementById("userInputP");
+const userChoiceS = document.getElementById("userInputS");
+
+const human_Score = document.getElementById("humanScore");
+const computer_Score = document.getElementById("computerScore");
+function updateCounters() {
+    human_Score.textContent=`Human Score: ${humanScore}`;
+    computer_Score.textContent=`Computer Score: ${computerScore}`;
+};
+function getComputerChoice (max) {
+    return Math.floor(Math.random()*(max))
+    
+}
+function playRound(userChoice){
+    let computerChoice = getComputerChoice(3);
+    console.log(computerChoice);
+    if (userChoice == computerChoice){
+        window.alert("its a tie")
+    } else if (
+        (userChoice == 0 && computerChoice == 2) ||
+        (userChoice == 1 && computerChoice == 0) ||
+        (userChoice == 2 && computerChoice == 1)
+) {
+    window.alert("you win!");
+    humanScore++;
+    updateCounters();
+} else {
+    window.alert("Computer wins :( ")
+    computerScore++;
+    updateCounters();
+}
+}
+userChoiceR.addEventListener('click', () => playRound(0));
+userChoiceP.addEventListener('click', () => playRound(1));
+userChoiceS.addEventListener('click', () => playRound(2));
+
+
+
+</script>
+</body>
+</html>
+
+    
